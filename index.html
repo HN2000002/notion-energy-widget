@@ -12,7 +12,7 @@
       margin: 0;
       padding: 0;
       width: 100%;
-      height: 190px;
+      height: 230px;
       overflow: hidden;
       background: transparent;
     }
@@ -25,7 +25,7 @@
 
     .focus-card {
       width: 760px;
-      height: 165px;
+      min-height: 165px;
       background: #fffdf9;
       border: 1px solid #e8d9d0;
       border-radius: 16px;
@@ -33,6 +33,7 @@
       padding: 16px 20px;
       color: #2f2925;
       position: relative;
+      overflow: hidden;
     }
 
     .edit-btn {
@@ -49,6 +50,7 @@
       text-transform: uppercase;
       padding: 4px 8px;
       cursor: pointer;
+      z-index: 5;
     }
 
     .edit-btn:hover {
@@ -240,12 +242,60 @@
       margin-top: 3px;
       color: #7d6258;
     }
+
+    .edit-panel {
+      display: none;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid #eadfd8;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .edit-panel.open {
+      display: grid;
+    }
+
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #eadfd8;
+      border-radius: 10px;
+      background: #fffaf6;
+      padding: 6px 8px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 12px;
+      color: #2f2925;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #d7bfb5;
+      background: #fffdf9;
+    }
+
+    .save-btn {
+      border: 1px solid #d7bfb5;
+      background: #efe2dc;
+      color: #5d453d;
+      border-radius: 999px;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 8px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 6px 10px;
+      cursor: pointer;
+    }
+
+    .save-btn:hover {
+      background: #e8d7cf;
+    }
   </style>
 </head>
 
 <body>
   <div class="focus-card">
-    <button class="edit-btn" onclick="editWidget()">Edit</button>
+    <button class="edit-btn" onclick="toggleEdit()">Edit</button>
 
     <div class="top-title">
       <span class="icon">◎</span>
@@ -284,15 +334,8 @@
         <div class="section-title">Energy Level</div>
         <div class="energy">
           <svg viewBox="0 0 120 70">
-            <path 
-              d="M22 60 A38 38 0 0 1 98 60" 
-              class="track"
-            />
-            <path 
-              id="progress"
-              d="M22 60 A38 38 0 0 1 84 34" 
-              class="progress"
-            />
+            <path d="M22 60 A38 38 0 0 1 98 60" class="track"/>
+            <path id="progress" d="M22 60 A38 38 0 0 1 84 34" class="progress"/>
           </svg>
 
           <div class="energy-label">
@@ -316,6 +359,16 @@
           <div id="cycleDay" class="cycle-day">Day 2</div>
         </div>
       </div>
+    </div>
+
+    <div id="editPanel" class="edit-panel">
+      <input id="inputPriority1" placeholder="Priority 1">
+      <input id="inputPriority2" placeholder="Priority 2">
+      <input id="inputPriority3" placeholder="Priority 3">
+      <input id="inputTheme" placeholder="Today's theme">
+      <input id="inputCyclePhase" placeholder="Cycle phase">
+      <input id="inputCycleDay" placeholder="Cycle day">
+      <button class="save-btn" onclick="saveEdits()">Save changes</button>
     </div>
   </div>
 
@@ -354,7 +407,7 @@
       localStorage.setItem("energyLevel", level);
     }
 
-    function saveText(id, value) {
+    function setText(id, value) {
       document.getElementById(id).innerHTML = value;
       localStorage.setItem(id, value);
     }
@@ -366,24 +419,27 @@
       }
     }
 
-    function editWidget() {
-      const p1 = prompt("Priority 1:", document.getElementById("priority1").innerText);
-      if (p1 !== null) saveText("priority1", p1);
+    function toggleEdit() {
+      const panel = document.getElementById("editPanel");
+      panel.classList.toggle("open");
 
-      const p2 = prompt("Priority 2:", document.getElementById("priority2").innerText);
-      if (p2 !== null) saveText("priority2", p2);
+      document.getElementById("inputPriority1").value = document.getElementById("priority1").innerText;
+      document.getElementById("inputPriority2").value = document.getElementById("priority2").innerText;
+      document.getElementById("inputPriority3").value = document.getElementById("priority3").innerText;
+      document.getElementById("inputTheme").value = document.getElementById("theme").innerText;
+      document.getElementById("inputCyclePhase").value = document.getElementById("cyclePhase").innerText;
+      document.getElementById("inputCycleDay").value = document.getElementById("cycleDay").innerText;
+    }
 
-      const p3 = prompt("Priority 3:", document.getElementById("priority3").innerText);
-      if (p3 !== null) saveText("priority3", p3);
+    function saveEdits() {
+      setText("priority1", document.getElementById("inputPriority1").value);
+      setText("priority2", document.getElementById("inputPriority2").value);
+      setText("priority3", document.getElementById("inputPriority3").value);
+      setText("theme", document.getElementById("inputTheme").value.replace(/\n/g, "<br>"));
+      setText("cyclePhase", document.getElementById("inputCyclePhase").value);
+      setText("cycleDay", document.getElementById("inputCycleDay").value);
 
-      const theme = prompt("Today’s theme:", document.getElementById("theme").innerText);
-      if (theme !== null) saveText("theme", theme.replace(/\n/g, "<br>"));
-
-      const phase = prompt("Cycle phase:", document.getElementById("cyclePhase").innerText);
-      if (phase !== null) saveText("cyclePhase", phase);
-
-      const day = prompt("Cycle day:", document.getElementById("cycleDay").innerText);
-      if (day !== null) saveText("cycleDay", day);
+      document.getElementById("editPanel").classList.remove("open");
     }
 
     ["priority1", "priority2", "priority3", "theme", "cyclePhase", "cycleDay"].forEach(loadText);
