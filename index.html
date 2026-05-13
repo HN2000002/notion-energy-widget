@@ -4,66 +4,83 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
 
   <style>
+    html,
     body {
       margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 150px;
+      overflow: hidden;
       background: transparent;
+    }
+
+    body {
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 210px;
-      font-family: "Cormorant Garamond", serif;
     }
 
     .card {
-      width: 220px;
-      height: 165px;
+      width: 190px;
+      height: 135px;
       background: #fffdf9;
-      border: 1px solid #eadfd8;
-      border-radius: 18px;
-      padding: 20px;
+      border: none;
+      border-radius: 0;
       text-align: center;
       box-sizing: border-box;
+      padding-top: 12px;
     }
 
     .title {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 11px;
-      letter-spacing: 3px;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 8.5px;
+      letter-spacing: 2.3px;
       font-weight: 700;
-      color: #3f342f;
-      margin-bottom: 12px;
+      color: #2f2925;
       text-transform: uppercase;
+      margin-bottom: 12px;
     }
 
     svg {
-      width: 150px;
-      height: 80px;
+      width: 112px;
+      height: 64px;
       overflow: visible;
+      display: block;
+      margin: 0 auto;
     }
 
     .track {
       fill: none;
-      stroke: #e7e2dc;
-      stroke-width: 8;
+      stroke: #e3dfd9;
+      stroke-width: 6.5;
       stroke-linecap: round;
     }
 
     .progress {
       fill: none;
-      stroke: #7f8968;
-      stroke-width: 8;
+      stroke: #7e8767;
+      stroke-width: 6.5;
       stroke-linecap: round;
     }
 
     .label {
-      margin-top: -8px;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 18px;
+      margin-top: -7px;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 17px;
       font-weight: 500;
-      color: #3f342f;
+      color: #2f2925;
+      line-height: 1;
+    }
+
+    .heart {
+      color: #bd7f86;
+      font-size: 12px;
+      margin-left: 3px;
+      position: relative;
+      top: -1px;
     }
   </style>
 </head>
@@ -74,16 +91,16 @@
 
     <svg viewBox="0 0 120 70">
       <path 
-        d="M20 60 A40 40 0 0 1 100 60" 
+        d="M22 60 A38 38 0 0 1 98 60" 
         class="track"
       />
       <path 
-        d="M20 60 A40 40 0 0 1 88 35" 
+        d="M22 60 A38 38 0 0 1 84 34" 
         class="progress"
       />
     </svg>
 
-    <div class="label">High ♡</div>
+    <div class="label">High<span class="heart">♡</span></div>
   </div>
 </body>
 </html>
