@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    body {
+      margin: 0;
+      background: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 210px;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .card {
+      width: 220px;
+      height: 165px;
+      background: #fffdf9;
+      border: 1px solid #eadfd8;
+      border-radius: 18px;
+      padding: 20px;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .title {
+      font-size: 11px;
+      letter-spacing: 2px;
+      font-weight: 600;
+      color: #4d4038;
+      margin-bottom: 12px;
+    }
+
+    svg {
+      width: 150px;
+      height: 80px;
+      overflow: visible;
+    }
+
+    .track {
+      fill: none;
+      stroke: #e7e2dc;
+      stroke-width: 8;
+      stroke-linecap: round;
+    }
+
+    .progress {
+      fill: none;
+      stroke: #7f8968;
+      stroke-width: 8;
+      stroke-linecap: round;
+    }
+
+    .label {
+      margin-top: -8px;
+      font-size: 16px;
+      color: #4b3b35;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <div class="title">ENERGY LEVEL</div>
+
+    <svg viewBox="0 0 120 70">
+      <path 
+        d="M20 60 A40 40 0 0 1 100 60" 
+        class="track"
+      />
+      <path 
+        d="M20 60 A40 40 0 0 1 88 35" 
+        class="progress"
+      />
+    </svg>
+
+    <div class="label">High ♡</div>
+  </div>
+</body>
+</html>
