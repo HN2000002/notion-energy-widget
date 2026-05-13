@@ -12,7 +12,7 @@
       margin: 0;
       padding: 0;
       width: 100%;
-      height: 152px;
+      height: 160px;
       overflow: hidden;
       background: transparent;
     }
@@ -24,8 +24,8 @@
     }
 
     .card {
-      width: 188px;
-      height: 142px;
+      width: 185px;
+      height: 148px;
       background: #fffdf9;
       border: 1px solid #e8d9d0;
       border-radius: 15px;
@@ -37,8 +37,8 @@
 
     .title {
       font-family: "Libre Baskerville", Georgia, serif;
-      font-size: 7.6px;
-      letter-spacing: 1.9px;
+      font-size: 7.5px;
+      letter-spacing: 1.8px;
       font-weight: 700;
       color: #2f2925;
       text-transform: uppercase;
@@ -85,33 +85,39 @@
       top: -1px;
     }
 
-    .buttons {
-      margin-top: 9px;
+    .controls {
+      margin-top: 10px;
       display: flex;
       justify-content: center;
-      gap: 4px;
+      gap: 7px;
     }
 
-    button {
-      border: 1px solid #eadfd8;
-      background: #fffaf6;
-      color: #6f5c52;
-      font-family: "Libre Baskerville", Georgia, serif;
-      font-size: 7px;
+    .dot {
+      width: 13px;
+      height: 13px;
       border-radius: 999px;
-      padding: 3px 6px;
+      border: 1px solid #d8c9c0;
+      background: #fffaf6;
       cursor: pointer;
-      transition: all 0.2s ease;
+      padding: 0;
     }
 
-    button:hover {
-      background: #f6eee9;
+    .dot.active {
+      background: #7f8968;
+      border-color: #7f8968;
     }
 
-    button.active {
-      background: #ede2dc;
-      color: #2f2925;
-      border-color: #d8c2b8;
+    .dot:hover {
+      background: #d8c9c0;
+    }
+
+    .hint {
+      margin-top: 5px;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 6.5px;
+      letter-spacing: 1px;
+      color: #9a8177;
+      text-transform: uppercase;
     }
   </style>
 </head>
@@ -136,12 +142,14 @@
       <span id="label">High</span><span class="heart">♡</span>
     </div>
 
-    <div class="buttons">
-      <button onclick="setLevel('low')" id="btn-low">Low</button>
-      <button onclick="setLevel('medium')" id="btn-medium">Med</button>
-      <button onclick="setLevel('high')" id="btn-high">High</button>
-      <button onclick="setLevel('veryhigh')" id="btn-veryhigh">Max</button>
+    <div class="controls">
+      <button class="dot" id="btn-low" onclick="setLevel('low')" title="Low"></button>
+      <button class="dot" id="btn-medium" onclick="setLevel('medium')" title="Medium"></button>
+      <button class="dot" id="btn-high" onclick="setLevel('high')" title="High"></button>
+      <button class="dot" id="btn-veryhigh" onclick="setLevel('veryhigh')" title="Very High"></button>
     </div>
+
+    <div class="hint">tap to change</div>
   </div>
 
   <script>
