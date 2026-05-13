@@ -12,7 +12,6 @@
       margin: 0;
       padding: 0;
       width: 100%;
-      min-width: 980px;
       height: 275px;
       overflow: hidden;
       background: transparent;
@@ -27,7 +26,8 @@
     }
 
     .focus-card {
-      width: min(96vw, 1120px);
+      width: calc(100vw - 40px);
+      max-width: none;
       min-height: 178px;
       background: #fffdf9;
       border: 1px solid #e8d9d0;
@@ -80,12 +80,12 @@
 
     .content-grid {
       display: grid;
-      grid-template-columns: 1.8fr 1.1fr 1fr 1.1fr;
+      grid-template-columns: 2fr 1.25fr 1.1fr 1.15fr;
       height: 124px;
     }
 
     .section {
-      padding: 0 28px;
+      padding: 0 30px;
       border-left: 1px solid #e1d2ca;
       box-sizing: border-box;
     }
@@ -93,7 +93,7 @@
     .section:first-child {
       border-left: none;
       padding-left: 0;
-      padding-right: 34px;
+      padding-right: 36px;
     }
 
     .section-title {
