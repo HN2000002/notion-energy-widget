@@ -12,7 +12,7 @@
       margin: 0;
       padding: 0;
       width: 100%;
-      height: 245px;
+      height: 265px;
       overflow: hidden;
       background: transparent;
     }
@@ -26,13 +26,13 @@
     }
 
     .focus-card {
-      width: 760px;
-      min-height: 165px;
+      width: 790px;
+      min-height: 178px;
       background: #fffdf9;
       border: 1px solid #e8d9d0;
       border-radius: 16px;
       box-sizing: border-box;
-      padding: 16px 20px 14px;
+      padding: 17px 22px 15px;
       color: #2f2925;
       position: relative;
       overflow: visible;
@@ -50,7 +50,7 @@
       font-size: 8px;
       letter-spacing: 1px;
       text-transform: uppercase;
-      padding: 4px 8px;
+      padding: 4px 9px;
       cursor: pointer;
       z-index: 5;
     }
@@ -61,7 +61,7 @@
 
     .top-title {
       font-family: "Libre Baskerville", Georgia, serif;
-      font-size: 9px;
+      font-size: 9.5px;
       letter-spacing: 1.5px;
       font-weight: 700;
       text-transform: uppercase;
@@ -79,11 +79,11 @@
     .content-grid {
       display: grid;
       grid-template-columns: 1.35fr 1fr 1fr 1fr;
-      height: 105px;
+      height: 118px;
     }
 
     .section {
-      padding: 0 18px;
+      padding: 0 19px;
       border-left: 1px solid #eadfd8;
       box-sizing: border-box;
     }
@@ -95,7 +95,7 @@
 
     .section-title {
       font-family: "Libre Baskerville", Georgia, serif;
-      font-size: 7.5px;
+      font-size: 8px;
       letter-spacing: 1.4px;
       font-weight: 700;
       text-transform: uppercase;
@@ -115,14 +115,14 @@
       gap: 9px;
       margin-bottom: 8px;
       font-family: "Playfair Display", Georgia, serif;
-      font-size: 12.5px;
+      font-size: 13.5px;
       color: #3b322e;
       white-space: nowrap;
     }
 
     .number {
-      width: 18px;
-      height: 18px;
+      width: 19px;
+      height: 19px;
       border-radius: 999px;
       background: #efe2dc;
       color: #7d6258;
@@ -136,15 +136,15 @@
 
     .theme {
       text-align: center;
-      padding-top: 14px;
+      padding-top: 13px;
     }
 
     .theme-main {
       font-family: "Playfair Display", Georgia, serif;
-      font-size: 18px;
-      line-height: 1.15;
+      font-size: 21px;
+      line-height: 1.12;
       color: #3a302b;
-      min-height: 44px;
+      min-height: 50px;
     }
 
     .theme-flourish {
@@ -155,12 +155,12 @@
 
     .energy {
       text-align: center;
-      padding-top: 1px;
+      padding-top: 0;
     }
 
     svg {
-      width: 112px;
-      height: 58px;
+      width: 116px;
+      height: 59px;
       overflow: visible;
       display: block;
       margin: 0 auto;
@@ -184,7 +184,7 @@
     .energy-label {
       margin-top: -8px;
       font-family: "Playfair Display", Georgia, serif;
-      font-size: 14px;
+      font-size: 15px;
       color: #2f2925;
     }
 
@@ -220,57 +220,120 @@
 
     .cycle {
       text-align: center;
-      padding-top: 2px;
+      padding-top: 0;
+      position: relative;
     }
 
-    .cycle-circle {
-      width: 46px;
-      height: 46px;
+    .phase-wheel {
+      width: 74px;
+      height: 74px;
       border-radius: 999px;
-      background: #f3d9d5;
+      background: #f7eee9;
+      border: 1px solid #ead7d2;
+      margin: 0 auto 5px;
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 6px;
+    }
+
+    .phase-centre {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      background: #f3d9d5;
       color: #b8757d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 20px;
+      transition: all 0.25s ease;
+    }
+
+    .phase-btn {
+      position: absolute;
+      width: 21px;
+      height: 21px;
+      border-radius: 999px;
+      border: 1px solid #e3c9c4;
+      background: #fffdf9;
+      color: #a27b74;
+      cursor: pointer;
+      padding: 0;
+      font-size: 10px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Playfair Display", Georgia, serif;
+      transition: all 0.2s ease;
+    }
+
+    .phase-btn:hover {
+      background: #f6e7e3;
+    }
+
+    .phase-btn.active {
+      background: #dca6a3;
+      border-color: #dca6a3;
+      color: #fffdf9;
+      transform: scale(1.05);
+    }
+
+    .phase-btn.top {
+      top: -7px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .phase-btn.right {
+      right: -7px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .phase-btn.bottom {
+      bottom: -7px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .phase-btn.left {
+      left: -7px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .phase-btn.active.top {
+      transform: translateX(-50%) scale(1.05);
+    }
+
+    .phase-btn.active.right {
+      transform: translateY(-50%) scale(1.05);
+    }
+
+    .phase-btn.active.bottom {
+      transform: translateX(-50%) scale(1.05);
+    }
+
+    .phase-btn.active.left {
+      transform: translateY(-50%) scale(1.05);
     }
 
     .cycle-label {
       font-family: "Playfair Display", Georgia, serif;
-      font-size: 13.5px;
+      font-size: 14.5px;
       color: #2f2925;
       line-height: 1.1;
-    }
-
-    .phase-controls {
-      margin-top: 7px;
-      display: flex;
-      justify-content: center;
-      gap: 6px;
-    }
-
-    .phase-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      border: 1px solid #e1c7c5;
-      background: #fffaf6;
-      cursor: pointer;
-      padding: 0;
-    }
-
-    .phase-dot.active {
-      background: #dca6a3;
-      border-color: #dca6a3;
+      margin-top: 4px;
     }
 
     .edit-panel {
       display: none;
-      margin-top: 14px;
+      margin-top: 16px;
       padding-top: 12px;
       border-top: 1px solid #eadfd8;
-      grid-template-columns: 1fr 1fr 1fr auto;
+      grid-template-columns: 1fr 1fr 1fr 1fr auto;
       gap: 8px;
       align-items: center;
     }
@@ -285,9 +348,9 @@
       border: 1px solid #eadfd8;
       border-radius: 10px;
       background: #fffaf6;
-      padding: 6px 8px;
+      padding: 7px 9px;
       font-family: "Playfair Display", Georgia, serif;
-      font-size: 12px;
+      font-size: 13px;
       color: #2f2925;
       outline: none;
     }
@@ -306,7 +369,7 @@
       font-size: 8px;
       letter-spacing: 1px;
       text-transform: uppercase;
-      padding: 7px 12px;
+      padding: 8px 13px;
       cursor: pointer;
       white-space: nowrap;
     }
@@ -349,7 +412,7 @@
       <div class="section">
         <div class="section-title">Today’s Theme</div>
         <div class="theme">
-          <div class="theme-main">Discipline<br>is Freedom</div>
+          <div id="theme" class="theme-main">Discipline<br>is Freedom</div>
           <div class="theme-flourish">⌁</div>
         </div>
       </div>
@@ -377,16 +440,18 @@
 
       <div class="section">
         <div class="section-title">Cycle Phase</div>
-        <div class="cycle">
-          <div class="cycle-circle">♧</div>
-          <div id="cyclePhase" class="cycle-label">Menstrual</div>
 
-          <div class="phase-controls">
-            <button class="phase-dot" id="phase-menstrual" onclick="setPhase('menstrual')" title="Menstrual"></button>
-            <button class="phase-dot" id="phase-follicular" onclick="setPhase('follicular')" title="Follicular"></button>
-            <button class="phase-dot" id="phase-ovulatory" onclick="setPhase('ovulatory')" title="Ovulatory"></button>
-            <button class="phase-dot" id="phase-luteal" onclick="setPhase('luteal')" title="Luteal"></button>
+        <div class="cycle">
+          <div class="phase-wheel">
+            <button class="phase-btn top" id="phase-menstrual" onclick="setPhase('menstrual')" title="Menstrual">☾</button>
+            <button class="phase-btn right" id="phase-follicular" onclick="setPhase('follicular')" title="Follicular">✿</button>
+            <button class="phase-btn bottom" id="phase-ovulatory" onclick="setPhase('ovulatory')" title="Ovulatory">♡</button>
+            <button class="phase-btn left" id="phase-luteal" onclick="setPhase('luteal')" title="Luteal">◐</button>
+
+            <div class="phase-centre" id="phaseIcon">☾</div>
           </div>
+
+          <div id="cyclePhase" class="cycle-label">Menstrual</div>
         </div>
       </div>
     </div>
@@ -395,6 +460,7 @@
       <input id="inputPriority1" placeholder="Priority 1">
       <input id="inputPriority2" placeholder="Priority 2">
       <input id="inputPriority3" placeholder="Priority 3">
+      <input id="inputTheme" placeholder="Today's theme">
       <button class="save-btn" onclick="saveEdits()">Save</button>
     </div>
   </div>
@@ -422,19 +488,27 @@
     const phaseOptions = {
       menstrual: {
         label: "Menstrual",
-        icon: "♧"
+        icon: "☾",
+        colour: "#f3d9d5",
+        text: "#b8757d"
       },
       follicular: {
         label: "Follicular",
-        icon: "✦"
+        icon: "✿",
+        colour: "#e6ead8",
+        text: "#7f8968"
       },
       ovulatory: {
         label: "Ovulatory",
-        icon: "♡"
+        icon: "♡",
+        colour: "#f6ded2",
+        text: "#b8757d"
       },
       luteal: {
         label: "Luteal",
-        icon: "☾"
+        icon: "◐",
+        colour: "#eadfd8",
+        text: "#8b6f64"
       }
     };
 
@@ -457,7 +531,9 @@
       const selected = phaseOptions[phase] || phaseOptions.menstrual;
 
       document.getElementById("cyclePhase").textContent = selected.label;
-      document.querySelector(".cycle-circle").textContent = selected.icon;
+      document.getElementById("phaseIcon").textContent = selected.icon;
+      document.getElementById("phaseIcon").style.background = selected.colour;
+      document.getElementById("phaseIcon").style.color = selected.text;
 
       Object.keys(phaseOptions).forEach(key => {
         document.getElementById("phase-" + key).classList.remove("active");
@@ -469,14 +545,14 @@
     }
 
     function setText(id, value) {
-      document.getElementById(id).textContent = value;
+      document.getElementById(id).innerHTML = value;
       localStorage.setItem(id, value);
     }
 
     function loadText(id) {
       const saved = localStorage.getItem(id);
       if (saved) {
-        document.getElementById(id).textContent = saved;
+        document.getElementById(id).innerHTML = saved;
       }
     }
 
@@ -487,6 +563,7 @@
       document.getElementById("inputPriority1").value = document.getElementById("priority1").innerText;
       document.getElementById("inputPriority2").value = document.getElementById("priority2").innerText;
       document.getElementById("inputPriority3").value = document.getElementById("priority3").innerText;
+      document.getElementById("inputTheme").value = document.getElementById("theme").innerText;
     }
 
     function saveEdits() {
@@ -494,10 +571,13 @@
       setText("priority2", document.getElementById("inputPriority2").value);
       setText("priority3", document.getElementById("inputPriority3").value);
 
+      const themeText = document.getElementById("inputTheme").value;
+      setText("theme", themeText.replace(/\n/g, "<br>"));
+
       document.getElementById("editPanel").classList.remove("open");
     }
 
-    ["priority1", "priority2", "priority3"].forEach(loadText);
+    ["priority1", "priority2", "priority3", "theme"].forEach(loadText);
 
     const savedLevel = localStorage.getItem("energyLevel") || "medium";
     setLevel(savedLevel);
