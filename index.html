@@ -12,7 +12,8 @@
       margin: 0;
       padding: 0;
       width: 100%;
-      height: 270px;
+      min-width: 980px;
+      height: 275px;
       overflow: hidden;
       background: transparent;
     }
@@ -26,13 +27,13 @@
     }
 
     .focus-card {
-      width: 980px;
+      width: min(96vw, 1120px);
       min-height: 178px;
       background: #fffdf9;
       border: 1px solid #e8d9d0;
       border-radius: 16px;
       box-sizing: border-box;
-      padding: 18px 28px 16px;
+      padding: 18px 30px 16px;
       color: #241d19;
       position: relative;
       overflow: visible;
@@ -79,12 +80,12 @@
 
     .content-grid {
       display: grid;
-      grid-template-columns: 1.7fr 1.1fr 1fr 1.1fr;
+      grid-template-columns: 1.8fr 1.1fr 1fr 1.1fr;
       height: 124px;
     }
 
     .section {
-      padding: 0 24px;
+      padding: 0 28px;
       border-left: 1px solid #e1d2ca;
       box-sizing: border-box;
     }
@@ -92,7 +93,7 @@
     .section:first-child {
       border-left: none;
       padding-left: 0;
-      padding-right: 30px;
+      padding-right: 34px;
     }
 
     .section-title {
@@ -117,7 +118,7 @@
       gap: 10px;
       margin-bottom: 10px;
       font-family: "Playfair Display", Georgia, serif;
-      font-size: 15.5px;
+      font-size: 15.8px;
       font-weight: 500;
       color: #3a2b23;
       white-space: nowrap;
@@ -328,7 +329,7 @@
 
     .cycle-label {
       font-family: "Playfair Display", Georgia, serif;
-      font-size: 15.5px;
+      font-size: 15.8px;
       font-weight: 500;
       color: #31241d;
       line-height: 1.1;
