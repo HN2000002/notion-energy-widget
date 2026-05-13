@@ -79,13 +79,22 @@
     }
 
     .icon {
-      font-size: 13px;
       color: #8d7166;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon svg {
+      width: 14px;
+      height: 14px;
+      display: block;
     }
 
     .content-grid {
       display: grid;
-      grid-template-columns: 2.1fr 1.3fr 1.2fr 1.2fr;
+      grid-template-columns: 2.1fr 1.25fr 1.45fr 1.05fr;
       min-height: 138px;
     }
 
@@ -166,12 +175,18 @@
 
     .energy {
       text-align: center;
-      padding-top: 10px;
+      padding-top: 2px;
     }
 
-    svg {
-      width: 126px;
-      height: 66px;
+    .energy-gauge {
+      width: 100%;
+      max-width: 230px;
+      margin: 0 auto;
+    }
+
+    .energy svg {
+      width: 172px;
+      height: 82px;
       overflow: visible;
       display: block;
       margin: 0 auto;
@@ -193,9 +208,9 @@
     }
 
     .energy-label {
-      margin-top: -6px;
+      margin-top: -10px;
       font-family: "Playfair Display", Georgia, serif;
-      font-size: 17px;
+      font-size: 18px;
       font-weight: 500;
       color: #31241d;
     }
@@ -209,10 +224,10 @@
     }
 
     .controls {
-      margin-top: 8px;
+      margin-top: 9px;
       display: flex;
       justify-content: center;
-      gap: 7px;
+      gap: 8px;
     }
 
     .dot {
@@ -232,7 +247,7 @@
 
     .cycle {
       text-align: center;
-      padding-top: 8px;
+      padding-top: 6px;
     }
 
     .cycle-circle {
@@ -244,53 +259,44 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 23px;
       margin: 0 auto 10px;
       transition: all 0.25s ease;
     }
 
-    .cycle-label {
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: 16px;
-      font-weight: 500;
-      color: #31241d;
-      line-height: 1.1;
-      margin-bottom: 8px;
+    .cycle-circle svg {
+      width: 22px;
+      height: 22px;
+      display: block;
+      margin: 0;
+    }
+
+    .phase-dropdown-wrap {
+      position: relative;
+      display: inline-block;
+      max-width: 120px;
     }
 
     .phase-select {
-      width: 118px;
-      border: 1px solid #ead7d2;
-      border-radius: 999px;
-      background: #fffaf6;
-      color: #6f564c;
+      border: none;
+      background: transparent;
+      color: #31241d;
       font-family: "Playfair Display", Georgia, serif;
-      font-size: 13px;
-      padding: 6px 12px;
-      outline: none;
-      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
       text-align: center;
       text-align-last: center;
+      cursor: pointer;
+      outline: none;
+      padding: 0 16px 0 0;
+      appearance: none;
       -webkit-appearance: none;
       -moz-appearance: none;
-      appearance: none;
     }
 
-    .phase-select:focus {
-      border-color: #d9beb5;
-      background: #fffdf9;
-    }
-
-    .select-wrap {
-      position: relative;
-      display: inline-block;
-    }
-
-    .select-wrap::after {
-      content: "▾";
+    .phase-caret {
       position: absolute;
-      right: 12px;
-      top: 50%;
+      right: 0;
+      top: 52%;
       transform: translateY(-50%);
       font-size: 11px;
       color: #9c7d72;
@@ -355,7 +361,13 @@
       <button class="edit-btn" onclick="toggleEdit()">Edit</button>
 
       <div class="top-title">
-        <span class="icon">◎</span>
+        <span class="icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.7"></circle>
+            <circle cx="12" cy="12" r="4.7" fill="none" stroke="currentColor" stroke-width="1.7"></circle>
+            <circle cx="12" cy="12" r="1.6" fill="currentColor"></circle>
+          </svg>
+        </span>
         <span>TODAY’S FOCUS</span>
       </div>
 
@@ -390,20 +402,22 @@
         <div class="section">
           <div class="section-title">Energy Level</div>
           <div class="energy">
-            <svg viewBox="0 0 120 70">
-              <path d="M22 60 A38 38 0 0 1 98 60" class="track"/>
-              <path id="progress" d="M22 60 A38 38 0 0 1 84 34" class="progress"/>
-            </svg>
+            <div class="energy-gauge">
+              <svg viewBox="0 0 140 80">
+                <path d="M16 60 A54 54 0 0 1 124 60" class="track"/>
+                <path id="progress" d="M16 60 A54 54 0 0 1 102 20" class="progress"/>
+              </svg>
 
-            <div class="energy-label">
-              <span id="label">High</span><span class="heart">♡</span>
-            </div>
+              <div class="energy-label">
+                <span id="label">High</span><span class="heart">♡</span>
+              </div>
 
-            <div class="controls">
-              <button class="dot" id="btn-low" onclick="setLevel('low')" title="Low"></button>
-              <button class="dot" id="btn-medium" onclick="setLevel('medium')" title="Medium"></button>
-              <button class="dot" id="btn-high" onclick="setLevel('high')" title="High"></button>
-              <button class="dot" id="btn-veryhigh" onclick="setLevel('veryhigh')" title="Very High"></button>
+              <div class="controls">
+                <button class="dot" id="btn-low" onclick="setLevel('low')" title="Low"></button>
+                <button class="dot" id="btn-medium" onclick="setLevel('medium')" title="Medium"></button>
+                <button class="dot" id="btn-high" onclick="setLevel('high')" title="High"></button>
+                <button class="dot" id="btn-veryhigh" onclick="setLevel('veryhigh')" title="Very High"></button>
+              </div>
             </div>
           </div>
         </div>
@@ -412,16 +426,18 @@
           <div class="section-title">Cycle Phase</div>
 
           <div class="cycle">
-            <div class="cycle-circle" id="cycleIcon">🩸</div>
-            <div id="cyclePhase" class="cycle-label">Menstrual</div>
+            <div class="cycle-circle" id="cycleIconWrap">
+              <span id="cycleIcon"></span>
+            </div>
 
-            <div class="select-wrap">
+            <div class="phase-dropdown-wrap">
               <select id="phaseSelect" class="phase-select" onchange="setPhase(this.value)">
                 <option value="menstrual">Menstrual</option>
                 <option value="follicular">Follicular</option>
                 <option value="ovulatory">Ovulatory</option>
                 <option value="luteal">Luteal</option>
               </select>
+              <span class="phase-caret">▾</span>
             </div>
           </div>
         </div>
@@ -441,46 +457,64 @@
     const energyOptions = {
       low: {
         label: "Low",
-        path: "M22 60 A38 38 0 0 1 48 26"
+        path: "M16 60 A54 54 0 0 1 52 18"
       },
       medium: {
         label: "Medium",
-        path: "M22 60 A38 38 0 0 1 68 22"
+        path: "M16 60 A54 54 0 0 1 78 8"
       },
       high: {
         label: "High",
-        path: "M22 60 A38 38 0 0 1 84 34"
+        path: "M16 60 A54 54 0 0 1 102 20"
       },
       veryhigh: {
         label: "Very High",
-        path: "M22 60 A38 38 0 0 1 98 60"
+        path: "M16 60 A54 54 0 0 1 124 60"
       }
     };
 
     const phaseOptions = {
       menstrual: {
         label: "Menstrual",
-        icon: "🩸",
         bg: "#f3d9d5",
-        color: "#b8757d"
+        color: "#c2838a",
+        icon: `
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3C12 3 7.5 8.3 7.5 12.1A4.5 4.5 0 0 0 12 16.6A4.5 4.5 0 0 0 16.5 12.1C16.5 8.3 12 3 12 3Z"/>
+          </svg>
+        `
       },
       follicular: {
         label: "Follicular",
-        icon: "✿",
-        bg: "#e6ead8",
-        color: "#7f8968"
+        bg: "#e7ecdc",
+        color: "#7f8968",
+        icon: `
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 18V11"/>
+            <path d="M12 11C12 8.5 14 7 16.3 7C16.1 9.7 14.7 11 12 11Z"/>
+            <path d="M12 13C12 10.8 10.5 9.4 8.2 9.2C8.4 11.9 9.8 13 12 13Z"/>
+          </svg>
+        `
       },
       ovulatory: {
         label: "Ovulatory",
-        icon: "♡",
-        bg: "#f6ded2",
-        color: "#b8757d"
+        bg: "#f7e2d8",
+        color: "#ba7b82",
+        icon: `
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 7.2C10.7 5.9 8.5 5.9 7.2 7.2C5.9 8.5 5.9 10.7 7.2 12L12 16.8L16.8 12C18.1 10.7 18.1 8.5 16.8 7.2C15.5 5.9 13.3 5.9 12 7.2Z"/>
+          </svg>
+        `
       },
       luteal: {
         label: "Luteal",
-        icon: "☾",
-        bg: "#eadfd8",
-        color: "#8b6f64"
+        bg: "#ede4de",
+        color: "#8d7468",
+        icon: `
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M15.5 4.2C13 4.6 10.9 6.7 10.4 9.2C9.8 12.6 12.4 15.5 15.7 15.5C17 15.5 18.1 15.1 19 14.4C18 17.2 15.3 19.2 12.1 19.2C8 19.2 4.8 16 4.8 11.9C4.8 8.7 6.8 6 9.6 5C8.9 5.9 8.5 7 8.5 8.3C8.5 11.6 11.4 14.2 14.8 13.6C17.3 13.1 19.4 11 19.8 8.5C20.2 6.3 19.1 4.4 17.4 3.4C16.9 3.8 16.3 4 15.5 4.2Z"/>
+          </svg>
+        `
       }
     };
 
@@ -502,10 +536,9 @@
     function setPhase(phase) {
       const selected = phaseOptions[phase] || phaseOptions.menstrual;
 
-      document.getElementById("cyclePhase").textContent = selected.label;
-      document.getElementById("cycleIcon").textContent = selected.icon;
-      document.getElementById("cycleIcon").style.background = selected.bg;
-      document.getElementById("cycleIcon").style.color = selected.color;
+      document.getElementById("cycleIconWrap").style.background = selected.bg;
+      document.getElementById("cycleIconWrap").style.color = selected.color;
+      document.getElementById("cycleIcon").innerHTML = selected.icon;
       document.getElementById("phaseSelect").value = phase;
 
       localStorage.setItem("cyclePhase", phase);
