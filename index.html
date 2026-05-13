@@ -12,7 +12,7 @@
       margin: 0;
       padding: 0;
       width: 100%;
-      height: 160px;
+      height: 190px;
       overflow: hidden;
       background: transparent;
     }
@@ -23,31 +23,112 @@
       align-items: center;
     }
 
-    .card {
-      width: 185px;
-      height: 148px;
+    .focus-card {
+      width: 760px;
+      height: 165px;
       background: #fffdf9;
       border: 1px solid #e8d9d0;
-      border-radius: 15px;
-      text-align: center;
+      border-radius: 16px;
       box-sizing: border-box;
-      padding-top: 12px;
+      padding: 18px 24px;
+      color: #2f2925;
       box-shadow: 0 0 0 0.5px rgba(120, 90, 75, 0.04);
     }
 
-    .title {
+    .top-title {
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .icon {
+      font-size: 13px;
+      color: #9b8174;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr 1fr;
+      height: 105px;
+    }
+
+    .section {
+      padding: 0 22px;
+      border-left: 1px solid #eadfd8;
+      box-sizing: border-box;
+    }
+
+    .section:first-child {
+      border-left: none;
+      padding-left: 0;
+    }
+
+    .section-title {
       font-family: "Libre Baskerville", Georgia, serif;
       font-size: 7.5px;
-      letter-spacing: 1.8px;
+      letter-spacing: 1.4px;
       font-weight: 700;
-      color: #2f2925;
       text-transform: uppercase;
-      margin-bottom: 7px;
+      margin-bottom: 14px;
+      color: #3c332e;
+    }
+
+    .priority {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 8px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 12.5px;
+      color: #3b322e;
+      white-space: nowrap;
+    }
+
+    .number {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: #efe2dc;
+      color: #7d6258;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 9px;
+    }
+
+    .theme {
+      text-align: center;
+      padding-top: 17px;
+    }
+
+    .theme-main {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 19px;
+      line-height: 1.15;
+      color: #3a302b;
+    }
+
+    .theme-flourish {
+      margin-top: 8px;
+      font-size: 18px;
+      color: #9c8b76;
+    }
+
+    .energy {
+      text-align: center;
+      padding-top: 2px;
     }
 
     svg {
-      width: 96px;
-      height: 50px;
+      width: 112px;
+      height: 64px;
       overflow: visible;
       display: block;
       margin: 0 auto;
@@ -56,45 +137,43 @@
     .track {
       fill: none;
       stroke: #e4dfd9;
-      stroke-width: 6;
+      stroke-width: 7;
       stroke-linecap: round;
     }
 
     .progress {
       fill: none;
       stroke: #7f8968;
-      stroke-width: 6;
+      stroke-width: 7;
       stroke-linecap: round;
       transition: all 0.25s ease;
     }
 
-    .label {
-      margin-top: -6px;
+    .energy-label {
+      margin-top: -7px;
       font-family: "Playfair Display", Georgia, serif;
-      font-size: 14.5px;
-      font-weight: 400;
+      font-size: 14px;
       color: #2f2925;
-      line-height: 1;
     }
 
     .heart {
       color: #bd7f86;
-      font-size: 9.5px;
+      font-size: 10px;
       margin-left: 3px;
       position: relative;
       top: -1px;
     }
 
     .controls {
-      margin-top: 10px;
+      margin-top: 7px;
       display: flex;
       justify-content: center;
-      gap: 7px;
+      gap: 6px;
     }
 
     .dot {
-      width: 13px;
-      height: 13px;
+      width: 10px;
+      height: 10px;
       border-radius: 999px;
       border: 1px solid #d8c9c0;
       background: #fffaf6;
@@ -107,49 +186,113 @@
       border-color: #7f8968;
     }
 
-    .dot:hover {
-      background: #d8c9c0;
+    .cycle {
+      text-align: center;
+      padding-top: 7px;
     }
 
-    .hint {
-      margin-top: 5px;
+    .cycle-circle {
+      width: 55px;
+      height: 55px;
+      border-radius: 999px;
+      background: #f3d9d5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 8px;
+      color: #b8757d;
+      font-size: 22px;
+    }
+
+    .cycle-label {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 13.5px;
+      color: #2f2925;
+      line-height: 1.2;
+    }
+
+    .cycle-day {
       font-family: "Libre Baskerville", Georgia, serif;
-      font-size: 6.5px;
-      letter-spacing: 1px;
-      color: #9a8177;
-      text-transform: uppercase;
+      font-size: 8px;
+      letter-spacing: 0.6px;
+      margin-top: 3px;
+      color: #7d6258;
     }
   </style>
 </head>
 
 <body>
-  <div class="card">
-    <div class="title">ENERGY LEVEL</div>
-
-    <svg viewBox="0 0 120 70">
-      <path 
-        d="M22 60 A38 38 0 0 1 98 60" 
-        class="track"
-      />
-      <path 
-        id="progress"
-        d="M22 60 A38 38 0 0 1 84 34" 
-        class="progress"
-      />
-    </svg>
-
-    <div class="label">
-      <span id="label">High</span><span class="heart">♡</span>
+  <div class="focus-card">
+    <div class="top-title">
+      <span class="icon">◎</span>
+      <span>TODAY’S FOCUS</span>
     </div>
 
-    <div class="controls">
-      <button class="dot" id="btn-low" onclick="setLevel('low')" title="Low"></button>
-      <button class="dot" id="btn-medium" onclick="setLevel('medium')" title="Medium"></button>
-      <button class="dot" id="btn-high" onclick="setLevel('high')" title="High"></button>
-      <button class="dot" id="btn-veryhigh" onclick="setLevel('veryhigh')" title="Very High"></button>
-    </div>
+    <div class="content-grid">
+      <div class="section">
+        <div class="section-title">Top 3 Priorities</div>
 
-    <div class="hint">tap to change</div>
+        <div class="priority">
+          <span class="number">1</span>
+          <span>Job search & send applications</span>
+        </div>
+
+        <div class="priority">
+          <span class="number">2</span>
+          <span>Gym session — lower body</span>
+        </div>
+
+        <div class="priority">
+          <span class="number">3</span>
+          <span>Stream setup & dinner prep</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Today’s Theme</div>
+        <div class="theme">
+          <div class="theme-main">Discipline<br>is Freedom</div>
+          <div class="theme-flourish">⌁</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Energy Level</div>
+        <div class="energy">
+          <svg viewBox="0 0 120 70">
+            <path 
+              d="M22 60 A38 38 0 0 1 98 60" 
+              class="track"
+            />
+            <path 
+              id="progress"
+              d="M22 60 A38 38 0 0 1 84 34" 
+              class="progress"
+            />
+          </svg>
+
+          <div class="energy-label">
+            <span id="label">High</span><span class="heart">♡</span>
+          </div>
+
+          <div class="controls">
+            <button class="dot" id="btn-low" onclick="setLevel('low')" title="Low"></button>
+            <button class="dot" id="btn-medium" onclick="setLevel('medium')" title="Medium"></button>
+            <button class="dot" id="btn-high" onclick="setLevel('high')" title="High"></button>
+            <button class="dot" id="btn-veryhigh" onclick="setLevel('veryhigh')" title="Very High"></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Cycle Phase</div>
+        <div class="cycle">
+          <div class="cycle-circle">♧</div>
+          <div class="cycle-label">Menstrual</div>
+          <div class="cycle-day">Day 2</div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>
