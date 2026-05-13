@@ -54,7 +54,7 @@
 
     .content-grid {
       display: grid;
-      grid-template-columns: 1.3fr 1fr 1fr 1fr;
+      grid-template-columns: 1.35fr 1fr 1fr 1fr;
       height: 105px;
     }
 
@@ -75,7 +75,7 @@
       letter-spacing: 1.4px;
       font-weight: 700;
       text-transform: uppercase;
-      margin-bottom: 14px;
+      margin-bottom: 13px;
       color: #3c332e;
     }
 
@@ -101,11 +101,27 @@
       justify-content: center;
       font-family: "Libre Baskerville", Georgia, serif;
       font-size: 9px;
+      flex-shrink: 0;
+    }
+
+    [contenteditable="true"] {
+      outline: none;
+      cursor: text;
+      border-radius: 5px;
+      padding: 1px 3px;
+    }
+
+    [contenteditable="true"]:hover {
+      background: #f8f1ed;
+    }
+
+    [contenteditable="true"]:focus {
+      background: #f4e9e4;
     }
 
     .theme {
       text-align: center;
-      padding-top: 17px;
+      padding-top: 14px;
     }
 
     .theme-main {
@@ -113,22 +129,23 @@
       font-size: 19px;
       line-height: 1.15;
       color: #3a302b;
+      min-height: 44px;
     }
 
     .theme-flourish {
-      margin-top: 8px;
+      margin-top: 5px;
       font-size: 18px;
       color: #9c8b76;
     }
 
     .energy {
       text-align: center;
-      padding-top: 2px;
+      padding-top: 1px;
     }
 
     svg {
       width: 112px;
-      height: 64px;
+      height: 60px;
       overflow: visible;
       display: block;
       margin: 0 auto;
@@ -150,7 +167,7 @@
     }
 
     .energy-label {
-      margin-top: -7px;
+      margin-top: -8px;
       font-family: "Playfair Display", Georgia, serif;
       font-size: 14px;
       color: #2f2925;
@@ -165,7 +182,7 @@
     }
 
     .controls {
-      margin-top: 7px;
+      margin-top: 6px;
       display: flex;
       justify-content: center;
       gap: 6px;
@@ -188,27 +205,27 @@
 
     .cycle {
       text-align: center;
-      padding-top: 7px;
+      padding-top: 5px;
     }
 
     .cycle-circle {
-      width: 55px;
-      height: 55px;
+      width: 48px;
+      height: 48px;
       border-radius: 999px;
       background: #f3d9d5;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 8px;
+      margin: 0 auto 7px;
       color: #b8757d;
-      font-size: 22px;
+      font-size: 20px;
     }
 
     .cycle-label {
       font-family: "Playfair Display", Georgia, serif;
       font-size: 13.5px;
       color: #2f2925;
-      line-height: 1.2;
+      line-height: 1.1;
     }
 
     .cycle-day {
@@ -234,24 +251,24 @@
 
         <div class="priority">
           <span class="number">1</span>
-          <span>Job search & send applications</span>
+          <span id="priority1" contenteditable="true">Job search & send applications</span>
         </div>
 
         <div class="priority">
           <span class="number">2</span>
-          <span>Gym session — lower body</span>
+          <span id="priority2" contenteditable="true">Gym session — lower body</span>
         </div>
 
         <div class="priority">
           <span class="number">3</span>
-          <span>Stream setup & dinner prep</span>
+          <span id="priority3" contenteditable="true">Stream setup & dinner prep</span>
         </div>
       </div>
 
       <div class="section">
         <div class="section-title">Today’s Theme</div>
         <div class="theme">
-          <div class="theme-main">Discipline<br>is Freedom</div>
+          <div id="theme" class="theme-main" contenteditable="true">Discipline<br>is Freedom</div>
           <div class="theme-flourish">⌁</div>
         </div>
       </div>
@@ -287,9 +304,9 @@
       <div class="section">
         <div class="section-title">Cycle Phase</div>
         <div class="cycle">
-          <div class="cycle-circle">♧</div>
-          <div class="cycle-label">Menstrual</div>
-          <div class="cycle-day">Day 2</div>
+          <div class="cycle-circle">♡</div>
+          <div id="cyclePhase" class="cycle-label" contenteditable="true">Menstrual</div>
+          <div id="cycleDay" class="cycle-day" contenteditable="true">Day 2</div>
         </div>
       </div>
     </div>
@@ -329,6 +346,21 @@
 
       localStorage.setItem("energyLevel", level);
     }
+
+    function saveEditableText(id) {
+      const element = document.getElementById(id);
+
+      const saved = localStorage.getItem(id);
+      if (saved) {
+        element.innerHTML = saved;
+      }
+
+      element.addEventListener("input", () => {
+        localStorage.setItem(id, element.innerHTML);
+      });
+    }
+
+    ["priority1", "priority2", "priority3", "theme", "cyclePhase", "cycleDay"].forEach(saveEditableText);
 
     const savedLevel = localStorage.getItem("energyLevel") || "high";
     setLevel(savedLevel);
