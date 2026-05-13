@@ -12,7 +12,7 @@
       margin: 0;
       padding: 0;
       width: 100%;
-      height: 340px;
+      height: 360px;
       overflow: hidden;
       background: transparent;
     }
@@ -21,24 +21,24 @@
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      padding-top: 20px;
+      padding-top: 18px;
       box-sizing: border-box;
     }
 
     .scale-wrapper {
-      transform: scale(1.22);
+      transform: scale(1.18);
       transform-origin: top center;
       width: 980px;
     }
 
     .focus-card {
       width: 980px;
-      min-height: 178px;
+      min-height: 205px;
       background: #fffdf9;
       border: 1px solid #e8d9d0;
       border-radius: 16px;
       box-sizing: border-box;
-      padding: 18px 30px 16px;
+      padding: 18px 30px 18px;
       color: #241d19;
       position: relative;
       overflow: visible;
@@ -71,7 +71,7 @@
       letter-spacing: 1.4px;
       font-weight: 700;
       text-transform: uppercase;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -85,8 +85,8 @@
 
     .content-grid {
       display: grid;
-      grid-template-columns: 2fr 1.25fr 1.1fr 1.15fr;
-      height: 124px;
+      grid-template-columns: 2.1fr 1.3fr 1.2fr 1.2fr;
+      min-height: 138px;
     }
 
     .section {
@@ -103,11 +103,11 @@
 
     .section-title {
       font-family: "Libre Baskerville", Georgia, serif;
-      font-size: 8.8px;
+      font-size: 9.6px;
       letter-spacing: 1.3px;
       font-weight: 700;
       text-transform: uppercase;
-      margin-bottom: 13px;
+      margin-bottom: 16px;
       color: #4a382f;
       text-align: center;
     }
@@ -120,18 +120,18 @@
     .priority {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
+      gap: 12px;
+      margin-bottom: 14px;
       font-family: "Playfair Display", Georgia, serif;
-      font-size: 15.8px;
+      font-size: 18px;
       font-weight: 500;
       color: #3a2b23;
       white-space: nowrap;
     }
 
     .number {
-      width: 20px;
-      height: 20px;
+      width: 24px;
+      height: 24px;
       border-radius: 999px;
       background: #eddcd5;
       color: #6e564c;
@@ -139,39 +139,39 @@
       align-items: center;
       justify-content: center;
       font-family: "Libre Baskerville", Georgia, serif;
-      font-size: 9.5px;
+      font-size: 11px;
       font-weight: 700;
       flex-shrink: 0;
     }
 
     .theme {
       text-align: center;
-      padding-top: 12px;
+      padding-top: 18px;
     }
 
     .theme-main {
       font-family: "Playfair Display", Georgia, serif;
       font-size: 24px;
-      line-height: 1.08;
+      line-height: 1.12;
       font-weight: 500;
       color: #33241d;
-      min-height: 54px;
+      min-height: 58px;
     }
 
     .theme-flourish {
-      margin-top: 5px;
-      font-size: 17px;
+      margin-top: 8px;
+      font-size: 20px;
       color: #8d786c;
     }
 
     .energy {
       text-align: center;
-      padding-top: 0;
+      padding-top: 10px;
     }
 
     svg {
-      width: 120px;
-      height: 61px;
+      width: 126px;
+      height: 66px;
       overflow: visible;
       display: block;
       margin: 0 auto;
@@ -193,9 +193,9 @@
     }
 
     .energy-label {
-      margin-top: -8px;
+      margin-top: -6px;
       font-family: "Playfair Display", Georgia, serif;
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 500;
       color: #31241d;
     }
@@ -209,10 +209,10 @@
     }
 
     .controls {
-      margin-top: 6px;
+      margin-top: 8px;
       display: flex;
       justify-content: center;
-      gap: 6px;
+      gap: 7px;
     }
 
     .dot {
@@ -232,122 +232,78 @@
 
     .cycle {
       text-align: center;
-      padding-top: 0;
-      position: relative;
+      padding-top: 8px;
     }
 
-    .phase-wheel {
-      width: 76px;
-      height: 76px;
-      border-radius: 999px;
-      background: #f7eee9;
-      border: 1px solid #ead7d2;
-      margin: 0 auto 5px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .phase-centre {
-      width: 43px;
-      height: 43px;
+    .cycle-circle {
+      width: 58px;
+      height: 58px;
       border-radius: 999px;
       background: #f3d9d5;
       color: #b8757d;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      font-size: 23px;
+      margin: 0 auto 10px;
       transition: all 0.25s ease;
-    }
-
-    .phase-btn {
-      position: absolute;
-      width: 21px;
-      height: 21px;
-      border-radius: 999px;
-      border: 1px solid #e3c9c4;
-      background: #fffdf9;
-      color: #a27b74;
-      cursor: pointer;
-      padding: 0;
-      font-size: 10px;
-      line-height: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: "Playfair Display", Georgia, serif;
-      transition: all 0.2s ease;
-    }
-
-    .phase-btn:hover {
-      background: #f6e7e3;
-    }
-
-    .phase-btn.active {
-      background: #dca6a3;
-      border-color: #dca6a3;
-      color: #fffdf9;
-      transform: scale(1.05);
-    }
-
-    .phase-btn.top {
-      top: -7px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .phase-btn.right {
-      right: -7px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .phase-btn.bottom {
-      bottom: -7px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .phase-btn.left {
-      left: -7px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .phase-btn.active.top {
-      transform: translateX(-50%) scale(1.05);
-    }
-
-    .phase-btn.active.right {
-      transform: translateY(-50%) scale(1.05);
-    }
-
-    .phase-btn.active.bottom {
-      transform: translateX(-50%) scale(1.05);
-    }
-
-    .phase-btn.active.left {
-      transform: translateY(-50%) scale(1.05);
     }
 
     .cycle-label {
       font-family: "Playfair Display", Georgia, serif;
-      font-size: 15.8px;
+      font-size: 16px;
       font-weight: 500;
       color: #31241d;
       line-height: 1.1;
-      margin-top: 6px;
+      margin-bottom: 8px;
+    }
+
+    .phase-select {
+      width: 118px;
+      border: 1px solid #ead7d2;
+      border-radius: 999px;
+      background: #fffaf6;
+      color: #6f564c;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 13px;
+      padding: 6px 12px;
+      outline: none;
+      cursor: pointer;
+      text-align: center;
+      text-align-last: center;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+
+    .phase-select:focus {
+      border-color: #d9beb5;
+      background: #fffdf9;
+    }
+
+    .select-wrap {
+      position: relative;
+      display: inline-block;
+    }
+
+    .select-wrap::after {
+      content: "▾";
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 11px;
+      color: #9c7d72;
+      pointer-events: none;
     }
 
     .edit-panel {
       display: none;
       margin-top: 16px;
-      padding-top: 12px;
+      padding-top: 14px;
       border-top: 1px solid #eadfd8;
       grid-template-columns: 1.3fr 1.3fr 1.3fr 1fr auto;
-      gap: 9px;
+      gap: 10px;
       align-items: center;
     }
 
@@ -361,9 +317,9 @@
       border: 1px solid #eadfd8;
       border-radius: 10px;
       background: #fffaf6;
-      padding: 7px 9px;
+      padding: 8px 10px;
       font-family: "Playfair Display", Georgia, serif;
-      font-size: 13.5px;
+      font-size: 14px;
       color: #2f2925;
       outline: none;
     }
@@ -382,7 +338,7 @@
       font-size: 8.5px;
       letter-spacing: 1px;
       text-transform: uppercase;
-      padding: 8px 13px;
+      padding: 9px 14px;
       cursor: pointer;
       white-space: nowrap;
     }
@@ -456,16 +412,17 @@
           <div class="section-title">Cycle Phase</div>
 
           <div class="cycle">
-            <div class="phase-wheel">
-              <button class="phase-btn top" id="phase-menstrual" onclick="setPhase('menstrual')" title="Menstrual">☾</button>
-              <button class="phase-btn right" id="phase-follicular" onclick="setPhase('follicular')" title="Follicular">✿</button>
-              <button class="phase-btn bottom" id="phase-ovulatory" onclick="setPhase('ovulatory')" title="Ovulatory">♡</button>
-              <button class="phase-btn left" id="phase-luteal" onclick="setPhase('luteal')" title="Luteal">◐</button>
-
-              <div class="phase-centre" id="phaseIcon">☾</div>
-            </div>
-
+            <div class="cycle-circle" id="cycleIcon">🩸</div>
             <div id="cyclePhase" class="cycle-label">Menstrual</div>
+
+            <div class="select-wrap">
+              <select id="phaseSelect" class="phase-select" onchange="setPhase(this.value)">
+                <option value="menstrual">Menstrual</option>
+                <option value="follicular">Follicular</option>
+                <option value="ovulatory">Ovulatory</option>
+                <option value="luteal">Luteal</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
@@ -503,27 +460,27 @@
     const phaseOptions = {
       menstrual: {
         label: "Menstrual",
-        icon: "☾",
-        colour: "#f3d9d5",
-        text: "#b8757d"
+        icon: "🩸",
+        bg: "#f3d9d5",
+        color: "#b8757d"
       },
       follicular: {
         label: "Follicular",
         icon: "✿",
-        colour: "#e6ead8",
-        text: "#7f8968"
+        bg: "#e6ead8",
+        color: "#7f8968"
       },
       ovulatory: {
         label: "Ovulatory",
         icon: "♡",
-        colour: "#f6ded2",
-        text: "#b8757d"
+        bg: "#f6ded2",
+        color: "#b8757d"
       },
       luteal: {
         label: "Luteal",
-        icon: "◐",
-        colour: "#eadfd8",
-        text: "#8b6f64"
+        icon: "☾",
+        bg: "#eadfd8",
+        color: "#8b6f64"
       }
     };
 
@@ -546,15 +503,10 @@
       const selected = phaseOptions[phase] || phaseOptions.menstrual;
 
       document.getElementById("cyclePhase").textContent = selected.label;
-      document.getElementById("phaseIcon").textContent = selected.icon;
-      document.getElementById("phaseIcon").style.background = selected.colour;
-      document.getElementById("phaseIcon").style.color = selected.text;
-
-      Object.keys(phaseOptions).forEach(key => {
-        document.getElementById("phase-" + key).classList.remove("active");
-      });
-
-      document.getElementById("phase-" + phase).classList.add("active");
+      document.getElementById("cycleIcon").textContent = selected.icon;
+      document.getElementById("cycleIcon").style.background = selected.bg;
+      document.getElementById("cycleIcon").style.color = selected.color;
+      document.getElementById("phaseSelect").value = phase;
 
       localStorage.setItem("cyclePhase", phase);
     }
@@ -594,7 +546,7 @@
 
     ["priority1", "priority2", "priority3", "theme"].forEach(loadText);
 
-    const savedLevel = localStorage.getItem("energyLevel") || "medium";
+    const savedLevel = localStorage.getItem("energyLevel") || "high";
     setLevel(savedLevel);
 
     const savedPhase = localStorage.getItem("cyclePhase") || "menstrual";
