@@ -12,7 +12,7 @@
       margin: 0;
       padding: 0;
       width: 100%;
-      height: 275px;
+      height: 340px;
       overflow: hidden;
       background: transparent;
     }
@@ -21,13 +21,18 @@
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      padding-top: 10px;
+      padding-top: 20px;
       box-sizing: border-box;
     }
 
+    .scale-wrapper {
+      transform: scale(1.22);
+      transform-origin: top center;
+      width: 980px;
+    }
+
     .focus-card {
-      width: calc(100vw - 40px);
-      max-width: none;
+      width: 980px;
       min-height: 178px;
       background: #fffdf9;
       border: 1px solid #e8d9d0;
@@ -389,87 +394,89 @@
 </head>
 
 <body>
-  <div class="focus-card">
-    <button class="edit-btn" onclick="toggleEdit()">Edit</button>
+  <div class="scale-wrapper">
+    <div class="focus-card">
+      <button class="edit-btn" onclick="toggleEdit()">Edit</button>
 
-    <div class="top-title">
-      <span class="icon">◎</span>
-      <span>TODAY’S FOCUS</span>
-    </div>
-
-    <div class="content-grid">
-      <div class="section">
-        <div class="section-title">Top 3 Priorities</div>
-
-        <div class="priority">
-          <span class="number">1</span>
-          <span id="priority1">Job search & send applications</span>
-        </div>
-
-        <div class="priority">
-          <span class="number">2</span>
-          <span id="priority2">Gym session — lower body</span>
-        </div>
-
-        <div class="priority">
-          <span class="number">3</span>
-          <span id="priority3">Stream setup & dinner prep</span>
-        </div>
+      <div class="top-title">
+        <span class="icon">◎</span>
+        <span>TODAY’S FOCUS</span>
       </div>
 
-      <div class="section">
-        <div class="section-title">Today’s Theme</div>
-        <div class="theme">
-          <div id="theme" class="theme-main">Discipline<br>is Freedom</div>
-          <div class="theme-flourish">⌁</div>
-        </div>
-      </div>
+      <div class="content-grid">
+        <div class="section">
+          <div class="section-title">Top 3 Priorities</div>
 
-      <div class="section">
-        <div class="section-title">Energy Level</div>
-        <div class="energy">
-          <svg viewBox="0 0 120 70">
-            <path d="M22 60 A38 38 0 0 1 98 60" class="track"/>
-            <path id="progress" d="M22 60 A38 38 0 0 1 84 34" class="progress"/>
-          </svg>
-
-          <div class="energy-label">
-            <span id="label">High</span><span class="heart">♡</span>
+          <div class="priority">
+            <span class="number">1</span>
+            <span id="priority1">Job search & send applications</span>
           </div>
 
-          <div class="controls">
-            <button class="dot" id="btn-low" onclick="setLevel('low')" title="Low"></button>
-            <button class="dot" id="btn-medium" onclick="setLevel('medium')" title="Medium"></button>
-            <button class="dot" id="btn-high" onclick="setLevel('high')" title="High"></button>
-            <button class="dot" id="btn-veryhigh" onclick="setLevel('veryhigh')" title="Very High"></button>
+          <div class="priority">
+            <span class="number">2</span>
+            <span id="priority2">Gym session — lower body</span>
+          </div>
+
+          <div class="priority">
+            <span class="number">3</span>
+            <span id="priority3">Stream setup & dinner prep</span>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Today’s Theme</div>
+          <div class="theme">
+            <div id="theme" class="theme-main">Discipline<br>is Freedom</div>
+            <div class="theme-flourish">⌁</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Energy Level</div>
+          <div class="energy">
+            <svg viewBox="0 0 120 70">
+              <path d="M22 60 A38 38 0 0 1 98 60" class="track"/>
+              <path id="progress" d="M22 60 A38 38 0 0 1 84 34" class="progress"/>
+            </svg>
+
+            <div class="energy-label">
+              <span id="label">High</span><span class="heart">♡</span>
+            </div>
+
+            <div class="controls">
+              <button class="dot" id="btn-low" onclick="setLevel('low')" title="Low"></button>
+              <button class="dot" id="btn-medium" onclick="setLevel('medium')" title="Medium"></button>
+              <button class="dot" id="btn-high" onclick="setLevel('high')" title="High"></button>
+              <button class="dot" id="btn-veryhigh" onclick="setLevel('veryhigh')" title="Very High"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Cycle Phase</div>
+
+          <div class="cycle">
+            <div class="phase-wheel">
+              <button class="phase-btn top" id="phase-menstrual" onclick="setPhase('menstrual')" title="Menstrual">☾</button>
+              <button class="phase-btn right" id="phase-follicular" onclick="setPhase('follicular')" title="Follicular">✿</button>
+              <button class="phase-btn bottom" id="phase-ovulatory" onclick="setPhase('ovulatory')" title="Ovulatory">♡</button>
+              <button class="phase-btn left" id="phase-luteal" onclick="setPhase('luteal')" title="Luteal">◐</button>
+
+              <div class="phase-centre" id="phaseIcon">☾</div>
+            </div>
+
+            <div id="cyclePhase" class="cycle-label">Menstrual</div>
           </div>
         </div>
       </div>
 
-      <div class="section">
-        <div class="section-title">Cycle Phase</div>
-
-        <div class="cycle">
-          <div class="phase-wheel">
-            <button class="phase-btn top" id="phase-menstrual" onclick="setPhase('menstrual')" title="Menstrual">☾</button>
-            <button class="phase-btn right" id="phase-follicular" onclick="setPhase('follicular')" title="Follicular">✿</button>
-            <button class="phase-btn bottom" id="phase-ovulatory" onclick="setPhase('ovulatory')" title="Ovulatory">♡</button>
-            <button class="phase-btn left" id="phase-luteal" onclick="setPhase('luteal')" title="Luteal">◐</button>
-
-            <div class="phase-centre" id="phaseIcon">☾</div>
-          </div>
-
-          <div id="cyclePhase" class="cycle-label">Menstrual</div>
-        </div>
+      <div id="editPanel" class="edit-panel">
+        <input id="inputPriority1" placeholder="Priority 1">
+        <input id="inputPriority2" placeholder="Priority 2">
+        <input id="inputPriority3" placeholder="Priority 3">
+        <input id="inputTheme" placeholder="Today's theme">
+        <button class="save-btn" onclick="saveEdits()">Save</button>
       </div>
-    </div>
-
-    <div id="editPanel" class="edit-panel">
-      <input id="inputPriority1" placeholder="Priority 1">
-      <input id="inputPriority2" placeholder="Priority 2">
-      <input id="inputPriority3" placeholder="Priority 3">
-      <input id="inputTheme" placeholder="Today's theme">
-      <button class="save-btn" onclick="saveEdits()">Save</button>
     </div>
   </div>
 
