@@ -30,9 +30,29 @@
       border: 1px solid #e8d9d0;
       border-radius: 16px;
       box-sizing: border-box;
-      padding: 18px 24px;
+      padding: 16px 20px;
       color: #2f2925;
-      box-shadow: 0 0 0 0.5px rgba(120, 90, 75, 0.04);
+      position: relative;
+    }
+
+    .edit-btn {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      border: 1px solid #e6d8d0;
+      background: #fffaf6;
+      color: #7d6258;
+      border-radius: 999px;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 8px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      cursor: pointer;
+    }
+
+    .edit-btn:hover {
+      background: #f5ebe6;
     }
 
     .top-title {
@@ -41,7 +61,7 @@
       letter-spacing: 1.5px;
       font-weight: 700;
       text-transform: uppercase;
-      margin-bottom: 16px;
+      margin-bottom: 15px;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -59,7 +79,7 @@
     }
 
     .section {
-      padding: 0 22px;
+      padding: 0 18px;
       border-left: 1px solid #eadfd8;
       box-sizing: border-box;
     }
@@ -102,21 +122,6 @@
       font-family: "Libre Baskerville", Georgia, serif;
       font-size: 9px;
       flex-shrink: 0;
-    }
-
-    [contenteditable="true"] {
-      outline: none;
-      cursor: text;
-      border-radius: 5px;
-      padding: 1px 3px;
-    }
-
-    [contenteditable="true"]:hover {
-      background: #f8f1ed;
-    }
-
-    [contenteditable="true"]:focus {
-      background: #f4e9e4;
     }
 
     .theme {
@@ -240,6 +245,8 @@
 
 <body>
   <div class="focus-card">
+    <button class="edit-btn" onclick="editWidget()">Edit</button>
+
     <div class="top-title">
       <span class="icon">◎</span>
       <span>TODAY’S FOCUS</span>
@@ -251,24 +258,24 @@
 
         <div class="priority">
           <span class="number">1</span>
-          <span id="priority1" contenteditable="true">Job search & send applications</span>
+          <span id="priority1">Job search & send applications</span>
         </div>
 
         <div class="priority">
           <span class="number">2</span>
-          <span id="priority2" contenteditable="true">Gym session — lower body</span>
+          <span id="priority2">Gym session — lower body</span>
         </div>
 
         <div class="priority">
           <span class="number">3</span>
-          <span id="priority3" contenteditable="true">Stream setup & dinner prep</span>
+          <span id="priority3">Stream setup & dinner prep</span>
         </div>
       </div>
 
       <div class="section">
         <div class="section-title">Today’s Theme</div>
         <div class="theme">
-          <div id="theme" class="theme-main" contenteditable="true">Discipline<br>is Freedom</div>
+          <div id="theme" class="theme-main">Discipline<br>is Freedom</div>
           <div class="theme-flourish">⌁</div>
         </div>
       </div>
@@ -304,9 +311,9 @@
       <div class="section">
         <div class="section-title">Cycle Phase</div>
         <div class="cycle">
-          <div class="cycle-circle">♡</div>
-          <div id="cyclePhase" class="cycle-label" contenteditable="true">Menstrual</div>
-          <div id="cycleDay" class="cycle-day" contenteditable="true">Day 2</div>
+          <div class="cycle-circle">♧</div>
+          <div id="cyclePhase" class="cycle-label">Menstrual</div>
+          <div id="cycleDay" class="cycle-day">Day 2</div>
         </div>
       </div>
     </div>
@@ -347,20 +354,39 @@
       localStorage.setItem("energyLevel", level);
     }
 
-    function saveEditableText(id) {
-      const element = document.getElementById(id);
-
-      const saved = localStorage.getItem(id);
-      if (saved) {
-        element.innerHTML = saved;
-      }
-
-      element.addEventListener("input", () => {
-        localStorage.setItem(id, element.innerHTML);
-      });
+    function saveText(id, value) {
+      document.getElementById(id).innerHTML = value;
+      localStorage.setItem(id, value);
     }
 
-    ["priority1", "priority2", "priority3", "theme", "cyclePhase", "cycleDay"].forEach(saveEditableText);
+    function loadText(id) {
+      const saved = localStorage.getItem(id);
+      if (saved) {
+        document.getElementById(id).innerHTML = saved;
+      }
+    }
+
+    function editWidget() {
+      const p1 = prompt("Priority 1:", document.getElementById("priority1").innerText);
+      if (p1 !== null) saveText("priority1", p1);
+
+      const p2 = prompt("Priority 2:", document.getElementById("priority2").innerText);
+      if (p2 !== null) saveText("priority2", p2);
+
+      const p3 = prompt("Priority 3:", document.getElementById("priority3").innerText);
+      if (p3 !== null) saveText("priority3", p3);
+
+      const theme = prompt("Today’s theme:", document.getElementById("theme").innerText);
+      if (theme !== null) saveText("theme", theme.replace(/\n/g, "<br>"));
+
+      const phase = prompt("Cycle phase:", document.getElementById("cyclePhase").innerText);
+      if (phase !== null) saveText("cyclePhase", phase);
+
+      const day = prompt("Cycle day:", document.getElementById("cycleDay").innerText);
+      if (day !== null) saveText("cycleDay", day);
+    }
+
+    ["priority1", "priority2", "priority3", "theme", "cyclePhase", "cycleDay"].forEach(loadText);
 
     const savedLevel = localStorage.getItem("energyLevel") || "high";
     setLevel(savedLevel);
