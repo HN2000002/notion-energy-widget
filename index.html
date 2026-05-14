@@ -4,705 +4,133 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --cream: #fffdf9;
-      --cream-2: #fffaf6;
-      --line: #e8d9d0;
-      --line-2: #e1d2ca;
-      --brown: #241d19;
-      --brown-soft: #4a382f;
-      --blush: #eddcd5;
-      --sage: #7f8968;
-      --track: #e4dfd9;
+      --bg: #fffdfb;
+      --border: #eadfd6;
+      --text: #6b5648;
+      --muted: #9a887b;
+      --soft: #f7eee8;
+      --tag-bg: #eef2e8;
+      --tag-text: #7b8767;
+      --shadow: rgba(95, 77, 64, 0.04);
     }
 
-    html,
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      padding: 0;
-      width: 100%;
-      min-height: 230px;
-      overflow: hidden;
       background: transparent;
+      font-family: "Inter", sans-serif;
+      color: var(--text);
     }
 
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 14px;
-      box-sizing: border-box;
-    }
-
-    .focus-card {
+    .widget {
       width: 100%;
-      max-width: 1160px;
-      min-width: 620px;
-      background: var(--cream);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      box-sizing: border-box;
-      padding: 18px 30px 20px;
-      color: var(--brown);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .edit-btn {
-      position: absolute;
-      top: 10px;
-      right: 14px;
-      border: 1px solid #dcc8be;
-      background: var(--cream-2);
-      color: #7a5c51;
-      border-radius: 999px;
-      font-family: "Libre Baskerville", Georgia, serif;
-      font-size: 8.5px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 5px 10px;
-      cursor: pointer;
-      z-index: 5;
-    }
-
-    .edit-btn:hover {
-      background: #f5ebe6;
-    }
-
-    .top-title {
-      font-family: "Libre Baskerville", Georgia, serif;
-      font-size: clamp(9px, 0.8vw, 10.5px);
-      letter-spacing: 1.4px;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 18px;
       display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      padding: 6px;
+    }
+
+    .pill {
+      display: inline-flex;
       align-items: center;
       gap: 8px;
-      color: #3a2c24;
+      min-height: 34px;
+      padding: 7px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--bg);
+      box-shadow: 0 2px 8px var(--shadow);
+      white-space: nowrap;
     }
 
     .icon {
-      color: #8d7166;
-      line-height: 1;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .icon svg {
-      width: 14px;
-      height: 14px;
-      display: block;
-    }
-
-    .content-grid {
-      display: grid;
-      grid-template-columns: minmax(260px, 2.1fr) minmax(150px, 1.2fr) minmax(180px, 1.4fr) minmax(140px, 1fr);
-      min-height: 138px;
-    }
-
-    .section {
-      padding: 0 clamp(18px, 2vw, 30px);
-      border-left: 1px solid var(--line-2);
-      box-sizing: border-box;
-    }
-
-    .section:first-child {
-      border-left: none;
-      padding-left: 0;
-      padding-right: clamp(20px, 2.5vw, 36px);
-    }
-
-    .section-title {
-      font-family: "Libre Baskerville", Georgia, serif;
-      font-size: clamp(8.3px, 0.75vw, 9.6px);
-      letter-spacing: 1.3px;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-      color: var(--brown-soft);
-      text-align: center;
-    }
-
-    .section:first-child .section-title {
-      text-align: left;
-      padding-left: 2px;
-    }
-
-    .priority {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 14px;
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(14px, 1.25vw, 18px);
-      font-weight: 500;
-      color: #3a2b23;
-      white-space: nowrap;
-    }
-
-    .number {
-      width: clamp(20px, 1.7vw, 24px);
-      height: clamp(20px, 1.7vw, 24px);
+      width: 18px;
+      height: 18px;
       border-radius: 999px;
-      background: var(--blush);
-      color: #6e564c;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-family: "Libre Baskerville", Georgia, serif;
-      font-size: clamp(9px, 0.8vw, 11px);
-      font-weight: 700;
+      display: grid;
+      place-items: center;
+      background: var(--soft);
+      color: var(--text);
+      font-size: 10px;
+      line-height: 1;
       flex-shrink: 0;
     }
 
-    .theme {
-      text-align: center;
-      padding-top: 17px;
-    }
-
-    .theme-main {
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(17px, 1.55vw, 21px);
-      line-height: 1.08;
-      font-weight: 500;
-      color: #33241d;
-      min-height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      white-space: pre-line;
-    }
-
-    .theme-floral {
-      margin-top: 7px;
-      color: #9c7f73;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      opacity: 0.85;
-    }
-
-    .theme-floral svg {
-      width: 42px;
-      height: 18px;
-      display: block;
-    }
-
-    .energy {
-      text-align: center;
-      padding-top: 1px;
-    }
-
-    .energy-gauge {
-      width: 100%;
-      max-width: 190px;
-      margin: 0 auto;
-    }
-
-    .energy-svg {
-      width: 155px;
-      height: 82px;
-      overflow: visible;
-      display: block;
-      margin: 0 auto;
-    }
-
-    .track {
-      fill: none;
-      stroke: var(--track);
-      stroke-width: 7;
-      stroke-linecap: round;
-    }
-
-    .progress {
-      fill: none;
-      stroke: var(--sage);
-      stroke-width: 7;
-      stroke-linecap: round;
-      stroke-dasharray: 0 100;
-      transition: stroke-dasharray 0.25s ease;
-    }
-
-    .energy-label {
-      margin-top: -13px;
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(14px, 1.2vw, 17px);
-      font-weight: 500;
-      color: #31241d;
-    }
-
-    .heart {
-      color: #bd7f86;
+    .label {
       font-size: 10px;
-      margin-left: 3px;
-      position: relative;
-      top: -1px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.01em;
     }
 
-    .controls {
-      margin-top: 9px;
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
+    .tag {
+      padding: 4px 8px;
       border-radius: 999px;
-      border: 1px solid #d8c9c0;
-      background: var(--cream-2);
-      cursor: pointer;
-      padding: 0;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 9px;
+      font-weight: 600;
+      line-height: 1;
     }
 
-    .dot.active {
-      background: var(--sage);
-      border-color: var(--sage);
-    }
-
-    .cycle {
-      text-align: center;
-      padding-top: 9px;
-    }
-
-    .cycle-circle {
-      width: 58px;
-      height: 58px;
-      border-radius: 999px;
-      background: #f3d9d5;
-      color: #b8757d;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 10px;
-      transition: all 0.25s ease;
-    }
-
-    .cycle-circle svg {
-      width: 22px;
-      height: 22px;
-      display: block;
-      margin: 0;
-    }
-
-    .phase-dropdown-wrap {
-      position: relative;
-      display: inline-block;
-      max-width: 120px;
-    }
-
-    .phase-select {
-      border: none;
-      background: transparent;
-      color: #31241d;
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(14px, 1.1vw, 16px);
-      font-weight: 500;
-      text-align: center;
-      text-align-last: center;
-      cursor: pointer;
-      outline: none;
-      padding: 0 16px 0 0;
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-    }
-
-    .phase-caret {
-      position: absolute;
-      right: 0;
-      top: 52%;
-      transform: translateY(-50%);
-      font-size: 11px;
-      color: #9c7d72;
-      pointer-events: none;
-    }
-
-    .edit-overlay {
-      display: none;
-      position: absolute;
-      inset: 0;
-      background: rgba(255, 253, 249, 0.94);
-      backdrop-filter: blur(3px);
-      z-index: 20;
-      padding: 22px 28px;
-      box-sizing: border-box;
-    }
-
-    .edit-overlay.open {
-      display: block;
-    }
-
-    .edit-box {
-      width: 100%;
-      height: 100%;
-      border: 1px solid #eadfd8;
-      border-radius: 14px;
-      background: rgba(255, 250, 246, 0.9);
-      box-sizing: border-box;
-      padding: 18px 20px;
-    }
-
-    .edit-heading {
-      font-family: "Libre Baskerville", Georgia, serif;
-      font-size: 10px;
-      letter-spacing: 1.4px;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: #4a382f;
-      margin-bottom: 14px;
-    }
-
-    .edit-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-
-    input {
-      width: 100%;
-      box-sizing: border-box;
-      border: 1px solid #eadfd8;
-      border-radius: 10px;
-      background: var(--cream);
-      padding: 9px 10px;
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: 14px;
-      color: #2f2925;
-      outline: none;
-    }
-
-    input:focus {
-      border-color: #d7bfb5;
-      background: #fffdf9;
-    }
-
-    .theme-input {
-      grid-column: span 1;
-    }
-
-    .edit-actions {
-      display: flex;
-      justify-content: flex-end;
-      gap: 8px;
-    }
-
-    .save-btn,
-    .cancel-btn {
-      border: 1px solid #d7bfb5;
-      border-radius: 999px;
-      font-family: "Libre Baskerville", Georgia, serif;
-      font-size: 8.5px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 8px 14px;
-      cursor: pointer;
+    .theme .tag {
+      max-width: 140px;
+      overflow: hidden;
+      text-overflow: ellipsis;
       white-space: nowrap;
     }
 
-    .save-btn {
-      background: #efe2dc;
-      color: #5d453d;
-    }
-
-    .save-btn:hover {
-      background: #e8d7cf;
-    }
-
-    .cancel-btn {
-      background: var(--cream);
-      color: #7a5c51;
-    }
-
-    .cancel-btn:hover {
-      background: #f7eee9;
-    }
-
-    @media (max-width: 760px) {
-      body {
-        padding: 10px;
+    @media (max-width: 500px) {
+      .widget {
+        gap: 8px;
       }
 
-      .focus-card {
-        min-width: 0;
-        padding: 16px 18px 18px;
+      .pill {
+        padding: 7px 10px;
       }
 
-      .content-grid {
-        grid-template-columns: 1fr 1fr;
-        row-gap: 20px;
-      }
-
-      .section:nth-child(3) {
-        border-left: none;
-      }
-
-      .edit-grid {
-        grid-template-columns: 1fr 1fr;
+      .theme .tag {
+        max-width: 110px;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="focus-card">
-    <button class="edit-btn" onclick="openEdit()">Edit</button>
+  <div class="widget">
 
-    <div class="top-title">
-      <span class="icon">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.7"></circle>
-          <circle cx="12" cy="12" r="4.7" fill="none" stroke="currentColor" stroke-width="1.7"></circle>
-          <circle cx="12" cy="12" r="1.6" fill="currentColor"></circle>
-        </svg>
-      </span>
-      <span>TODAY’S FOCUS</span>
+    <div class="pill">
+      <div class="icon">◎</div>
+      <div class="label">Focus</div>
+      <div class="tag">High</div>
     </div>
 
-    <div class="content-grid">
-      <div class="section">
-        <div class="section-title">Top 3 Priorities</div>
-
-        <div class="priority">
-          <span class="number">1</span>
-          <span id="priority1">Job search & send applications</span>
-        </div>
-
-        <div class="priority">
-          <span class="number">2</span>
-          <span id="priority2">Gym session — lower body</span>
-        </div>
-
-        <div class="priority">
-          <span class="number">3</span>
-          <span id="priority3">Stream setup & dinner prep</span>
-        </div>
-      </div>
-
-      <div class="section">
-        <div class="section-title">Today’s Theme</div>
-        <div class="theme">
-          <div id="theme" class="theme-main">Discipline is Freedom</div>
-          <div class="theme-floral" aria-hidden="true">
-            <svg viewBox="0 0 80 30" fill="none">
-              <path d="M40 23C34 15 25 14 18 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M40 23C46 15 55 14 62 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M40 23C40 15 40 10 40 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M34 15C29 10 26 8 22 7C23 11 26 14 34 15Z" stroke="currentColor" stroke-width="1.3" fill="none"/>
-              <path d="M46 15C51 10 54 8 58 7C57 11 54 14 46 15Z" stroke="currentColor" stroke-width="1.3" fill="none"/>
-              <path d="M40 6C38 3 39 1 40 1C41 1 42 3 40 6Z" stroke="currentColor" stroke-width="1.2" fill="none"/>
-            </svg>
-          </div>
-        </div>
-      </div>
-
-      <div class="section">
-        <div class="section-title">Energy Level</div>
-        <div class="energy">
-          <div class="energy-gauge">
-            <svg viewBox="0 0 140 80" class="energy-svg">
-              <path
-                d="M18 62 A52 52 0 0 1 122 62"
-                class="track"
-                pathLength="100"
-              />
-              <path
-                id="progress"
-                d="M18 62 A52 52 0 0 1 122 62"
-                class="progress"
-                pathLength="100"
-              />
-            </svg>
-
-            <div class="energy-label">
-              <span id="label">High</span><span class="heart">♡</span>
-            </div>
-
-            <div class="controls">
-              <button class="dot" id="btn-low" onclick="setLevel('low')" title="Low"></button>
-              <button class="dot" id="btn-medium" onclick="setLevel('medium')" title="Medium"></button>
-              <button class="dot" id="btn-high" onclick="setLevel('high')" title="High"></button>
-              <button class="dot" id="btn-veryhigh" onclick="setLevel('veryhigh')" title="Very High"></button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section">
-        <div class="section-title">Cycle Phase</div>
-
-        <div class="cycle">
-          <div class="cycle-circle" id="cycleIconWrap">
-            <span id="cycleIcon"></span>
-          </div>
-
-          <div class="phase-dropdown-wrap">
-            <select id="phaseSelect" class="phase-select" onchange="setPhase(this.value)">
-              <option value="menstrual">Menstrual</option>
-              <option value="follicular">Follicular</option>
-              <option value="ovulatory">Ovulatory</option>
-              <option value="luteal">Luteal</option>
-            </select>
-            <span class="phase-caret">▾</span>
-          </div>
-        </div>
-      </div>
+    <div class="pill">
+      <div class="icon">⚡</div>
+      <div class="label">Energy</div>
+      <div class="tag">Very High</div>
     </div>
 
-    <div id="editOverlay" class="edit-overlay">
-      <div class="edit-box">
-        <div class="edit-heading">Edit Today’s Focus</div>
-
-        <div class="edit-grid">
-          <input id="inputPriority1" placeholder="Priority 1">
-          <input id="inputPriority2" placeholder="Priority 2">
-          <input id="inputPriority3" placeholder="Priority 3">
-          <input id="inputTheme" class="theme-input" placeholder="Today's theme">
-        </div>
-
-        <div class="edit-actions">
-          <button class="cancel-btn" onclick="closeEdit()">Cancel</button>
-          <button class="save-btn" onclick="saveEdits()">Save</button>
-        </div>
-      </div>
+    <div class="pill">
+      <div class="icon">🌿</div>
+      <div class="label">Cycle</div>
+      <div class="tag">Follicular</div>
     </div>
+
+    <div class="pill theme">
+      <div class="icon">✳</div>
+      <div class="label">Weekly Theme</div>
+      <div class="tag">Grow with Grace</div>
+    </div>
+
   </div>
-
-  <script>
-    const energyOptions = {
-      low: {
-        label: "Low",
-        percent: 28
-      },
-      medium: {
-        label: "Medium",
-        percent: 52
-      },
-      high: {
-        label: "High",
-        percent: 76
-      },
-      veryhigh: {
-        label: "Very High",
-        percent: 100
-      }
-    };
-
-    const phaseOptions = {
-      menstrual: {
-        bg: "#f3d9d5",
-        color: "#c2838a",
-        icon: `
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 3C12 3 7.5 8.3 7.5 12.1A4.5 4.5 0 0 0 12 16.6A4.5 4.5 0 0 0 16.5 12.1C16.5 8.3 12 3 12 3Z"/>
-          </svg>
-        `
-      },
-      follicular: {
-        bg: "#e7ecdc",
-        color: "#7f8968",
-        icon: `
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 18V11"/>
-            <path d="M12 11C12 8.5 14 7 16.3 7C16.1 9.7 14.7 11 12 11Z"/>
-            <path d="M12 13C12 10.8 10.5 9.4 8.2 9.2C8.4 11.9 9.8 13 12 13Z"/>
-          </svg>
-        `
-      },
-      ovulatory: {
-        bg: "#f7e2d8",
-        color: "#ba7b82",
-        icon: `
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 7.2C10.7 5.9 8.5 5.9 7.2 7.2C5.9 8.5 5.9 10.7 7.2 12L12 16.8L16.8 12C18.1 10.7 18.1 8.5 16.8 7.2C15.5 5.9 13.3 5.9 12 7.2Z"/>
-          </svg>
-        `
-      },
-      luteal: {
-        bg: "#ede4de",
-        color: "#8d7468",
-        icon: `
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M15.5 4.2C13 4.6 10.9 6.7 10.4 9.2C9.8 12.6 12.4 15.5 15.7 15.5C17 15.5 18.1 15.1 19 14.4C18 17.2 15.3 19.2 12.1 19.2C8 19.2 4.8 16 4.8 11.9C4.8 8.7 6.8 6 9.6 5C8.9 5.9 8.5 7 8.5 8.3C8.5 11.6 11.4 14.2 14.8 13.6C17.3 13.1 19.4 11 19.8 8.5C20.2 6.3 19.1 4.4 17.4 3.4C16.9 3.8 16.3 4 15.5 4.2Z"/>
-          </svg>
-        `
-      }
-    };
-
-    function setLevel(level) {
-      const selected = energyOptions[level] || energyOptions.high;
-
-      document.getElementById("label").textContent = selected.label;
-      document.getElementById("progress").style.strokeDasharray = selected.percent + " 100";
-
-      Object.keys(energyOptions).forEach(key => {
-        document.getElementById("btn-" + key).classList.remove("active");
-      });
-
-      document.getElementById("btn-" + level).classList.add("active");
-
-      localStorage.setItem("energyLevel", level);
-    }
-
-    function setPhase(phase) {
-      const selected = phaseOptions[phase] || phaseOptions.menstrual;
-
-      document.getElementById("cycleIconWrap").style.background = selected.bg;
-      document.getElementById("cycleIconWrap").style.color = selected.color;
-      document.getElementById("cycleIcon").innerHTML = selected.icon;
-      document.getElementById("phaseSelect").value = phase;
-
-      localStorage.setItem("cyclePhase", phase);
-    }
-
-    function setText(id, value) {
-      document.getElementById(id).textContent = value;
-      localStorage.setItem(id, value);
-    }
-
-    function loadText(id) {
-      const saved = localStorage.getItem(id);
-      if (saved) {
-        document.getElementById(id).textContent = saved;
-      }
-    }
-
-    function openEdit() {
-      document.getElementById("editOverlay").classList.add("open");
-
-      document.getElementById("inputPriority1").value = document.getElementById("priority1").innerText;
-      document.getElementById("inputPriority2").value = document.getElementById("priority2").innerText;
-      document.getElementById("inputPriority3").value = document.getElementById("priority3").innerText;
-      document.getElementById("inputTheme").value = document.getElementById("theme").innerText;
-    }
-
-    function closeEdit() {
-      document.getElementById("editOverlay").classList.remove("open");
-    }
-
-    function saveEdits() {
-      setText("priority1", document.getElementById("inputPriority1").value);
-      setText("priority2", document.getElementById("inputPriority2").value);
-      setText("priority3", document.getElementById("inputPriority3").value);
-      setText("theme", document.getElementById("inputTheme").value);
-
-      closeEdit();
-    }
-
-    ["priority1", "priority2", "priority3", "theme"].forEach(loadText);
-
-    const savedLevel = localStorage.getItem("energyLevel") || "high";
-    setLevel(savedLevel);
-
-    const savedPhase = localStorage.getItem("cyclePhase") || "menstrual";
-    setPhase(savedPhase);
-  </script>
 </body>
 </html>
