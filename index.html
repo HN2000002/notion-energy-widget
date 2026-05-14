@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -15,7 +15,7 @@
       --soft: #f7eee8;
       --tag-bg: #eef2e8;
       --tag-text: #7b8767;
-      --shadow: rgba(95, 77, 64, 0.04);
+      --shadow: rgba(95, 77, 64, 0.06);
     }
 
     * {
@@ -34,71 +34,102 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 10px;
-      padding: 6px;
+      gap: 14px;
+      padding: 12px;
     }
 
     .pill {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      min-height: 34px;
-      padding: 7px 12px;
+      gap: 10px;
+      min-height: 46px;
+      padding: 10px 16px;
       border: 1px solid var(--border);
       border-radius: 999px;
       background: var(--bg);
-      box-shadow: 0 2px 8px var(--shadow);
+      box-shadow: 0 4px 14px var(--shadow);
       white-space: nowrap;
     }
 
     .icon {
-      width: 18px;
-      height: 18px;
+      width: 24px;
+      height: 24px;
       border-radius: 999px;
       display: grid;
       place-items: center;
       background: var(--soft);
       color: var(--text);
-      font-size: 10px;
+      font-size: 13px;
       line-height: 1;
       flex-shrink: 0;
     }
 
     .label {
-      font-size: 10px;
-      font-weight: 600;
+      font-size: 12px;
+      font-weight: 700;
       color: var(--text);
       letter-spacing: 0.01em;
     }
 
-    .tag {
-      padding: 4px 8px;
+    select {
+      appearance: none;
+      -webkit-appearance: none;
+      border: none;
+      outline: none;
+      cursor: pointer;
+
+      padding: 6px 24px 6px 10px;
       border-radius: 999px;
-      background: var(--tag-bg);
+      background-color: var(--tag-bg);
       color: var(--tag-text);
-      font-size: 9px;
-      font-weight: 600;
+
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      font-weight: 700;
       line-height: 1;
+
+      background-image:
+        linear-gradient(45deg, transparent 50%, var(--tag-text) 50%),
+        linear-gradient(135deg, var(--tag-text) 50%, transparent 50%);
+      background-position:
+        calc(100% - 12px) 50%,
+        calc(100% - 8px) 50%;
+      background-size:
+        4px 4px,
+        4px 4px;
+      background-repeat: no-repeat;
     }
 
-    .theme .tag {
-      max-width: 140px;
-      overflow: hidden;
+    select:hover {
+      filter: brightness(0.98);
+    }
+
+    .theme select {
+      max-width: 170px;
       text-overflow: ellipsis;
-      white-space: nowrap;
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 600px) {
       .widget {
-        gap: 8px;
+        gap: 10px;
+        padding: 10px;
       }
 
       .pill {
-        padding: 7px 10px;
+        min-height: 42px;
+        padding: 9px 13px;
       }
 
-      .theme .tag {
-        max-width: 110px;
+      .label {
+        font-size: 11px;
+      }
+
+      select {
+        font-size: 10px;
+      }
+
+      .theme select {
+        max-width: 135px;
       }
     }
   </style>
@@ -110,27 +141,69 @@
     <div class="pill">
       <div class="icon">◎</div>
       <div class="label">Focus</div>
-      <div class="tag">High</div>
+      <select id="focus">
+        <option>Low</option>
+        <option>Gentle</option>
+        <option selected>High</option>
+        <option>Deep Focus</option>
+        <option>Reset</option>
+      </select>
     </div>
 
     <div class="pill">
       <div class="icon">⚡</div>
       <div class="label">Energy</div>
-      <div class="tag">Very High</div>
+      <select id="energy">
+        <option>Low</option>
+        <option>Soft</option>
+        <option>Good</option>
+        <option selected>Very High</option>
+        <option>Rest Needed</option>
+      </select>
     </div>
 
     <div class="pill">
       <div class="icon">🌿</div>
       <div class="label">Cycle</div>
-      <div class="tag">Follicular</div>
+      <select id="cycle">
+        <option>Menstrual</option>
+        <option selected>Follicular</option>
+        <option>Ovulation</option>
+        <option>Luteal</option>
+        <option>Not Tracking</option>
+      </select>
     </div>
 
     <div class="pill theme">
       <div class="icon">✳</div>
       <div class="label">Weekly Theme</div>
-      <div class="tag">Grow with Grace</div>
+      <select id="theme">
+        <option selected>Grow with Grace</option>
+        <option>Soft Discipline</option>
+        <option>Clean Slate</option>
+        <option>Quiet Confidence</option>
+        <option>Romanticise the Basics</option>
+        <option>Reset & Rebuild</option>
+      </select>
     </div>
 
   </div>
+
+  <script>
+    const fields = ["focus", "energy", "cycle", "theme"];
+
+    fields.forEach((field) => {
+      const select = document.getElementById(field);
+
+      const savedValue = localStorage.getItem("notion-status-" + field);
+      if (savedValue) {
+        select.value = savedValue;
+      }
+
+      select.addEventListener("change", () => {
+        localStorage.setItem("notion-status-" + field, select.value);
+      });
+    });
+  </script>
 </body>
 </html>
